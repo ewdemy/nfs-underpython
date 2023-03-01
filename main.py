@@ -3,11 +3,19 @@ pygame.init()
 
 janela = pygame.display.set_mode((800,600))
 pygame.display.set_caption("Need For Speed UnderPython")
-x = 400
-y = 300
+x = 350
+y = 200
 
 distancia = 10
 janela_aberta = True
+
+fundo = pygame.image.load("./img/fundo.png")
+carro_vermelho = pygame.image.load("./img/carro_vermelho.png")
+carro_amarelo = pygame.image.load("./img/carro_amarelo.png")
+
+fundo = pygame.transform.scale(fundo, (800,600))
+carro_vermelho = pygame.transform.scale(carro_vermelho, (100,180))
+
 while(janela_aberta):
     pygame.time.delay(50)
     for event in pygame.event.get():
@@ -24,8 +32,10 @@ while(janela_aberta):
     if (comandos[pygame.K_LEFT]):
         x -= distancia
 
-    janela.fill((0,0,0))
-    pygame.draw.circle(janela, (0,255,0), (x,y), 50)
+    janela.blit(fundo,(0,0))
+    janela.blit(carro_vermelho,(x,y))
+
+
     pygame.display.update()
 
 
