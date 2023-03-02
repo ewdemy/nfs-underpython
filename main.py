@@ -6,7 +6,16 @@ pygame.init()
 mixer.init()
 
 janela = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("Need For Speed UnderPython")
+pygame.display.set_caption("NFS UnderPython")
+
+timer = 0
+segundos = 0
+
+font = pygame.font.SysFont("arial black", 30)
+texto = font.render("Tempo: " + str(segundos) + " ", True, (255, 255, 255), (0, 0, 0))
+pos_texto = texto.get_rect()
+pos_texto.center = (90, 50)
+
 pos_carro_x = 373
 pos_carro_y = 350
 
@@ -63,11 +72,19 @@ while(janela_aberta):
     if pos_carro_vermelho_y > 600:
         pos_carro_vermelho_y = randint(-1500, -400)
 
+    if(timer < 20):
+        timer += 1
+    else:
+        segundos +=1
+        texto = font.render("Tempo: " + str(segundos) + " ", True, (255, 255, 255), (0, 0, 0))
+        timer = 0
+
     janela.blit(fundo, (0, 0))
     janela.blit(carro, (pos_carro_x, pos_carro_y))
     janela.blit(carro_vermelho, (pos_carro_vermelho_x, pos_carro_vermelho_y))
     janela.blit(carro_cinza, (pos_carro_cinza_x, pos_carro_cinza_y))
     janela.blit(carro_amarelo, (pos_carro_amarelo_x, pos_carro_amarelo_y))
+    janela.blit(texto, pos_texto)
 
     pygame.display.update()
 
