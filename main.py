@@ -48,9 +48,9 @@ while(janela_aberta):
             janela_aberta = False
 
         comandos = pygame.key.get_pressed()
-    if comandos[pygame.K_RIGHT]:
+    if comandos[pygame.K_RIGHT] and pos_carro_x < 493:
         pos_carro_x += distancia
-    if comandos[pygame.K_LEFT]:
+    if comandos[pygame.K_LEFT] and pos_carro_x > 250:
         pos_carro_x -= distancia
 
     pos_carro_cinza_y += velocidade + 5
