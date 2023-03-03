@@ -38,7 +38,7 @@ janela_aberta = True
 
 mixer.music.load("./sound/trilha.mp3")
 mixer.music.set_volume(0.5)
-#mixer.music.play()
+mixer.music.play()
 
 fundo = pygame.image.load("./img/fundo.png")
 icon = pygame.image.load("./img/icon.png")
