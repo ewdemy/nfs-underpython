@@ -10,11 +10,16 @@ pygame.display.set_caption("NFS UnderPython")
 
 timer = 0
 segundos = 0
+score = 0
+count_score = 0
 
 font = pygame.font.SysFont("arial black", 30)
 texto = font.render("Tempo: " + str(segundos) + " ", True, (255, 255, 255), (0, 0, 0))
+texto_score = font.render("Score: " + str(score) + " ", True, (255, 255, 255), (0, 0, 0))
 pos_texto = texto.get_rect()
 pos_texto.center = (90, 50)
+pos_texto_score = texto_score.get_rect()
+pos_texto_score.center = (715, 50)
 
 pos_carro_x = 373
 pos_carro_y = 350
@@ -67,15 +72,21 @@ while(janela_aberta):
         pos_carro_cinza_y = randint(-1500, -200)
     pos_carro_amarelo_y += velocidade + 10
     if pos_carro_amarelo_y > 600:
-        pos_carro_amarelo_y = randint(-1500, -500)
+        pos_carro_amarelo_y = randint(-1500, -600)
     pos_carro_vermelho_y += velocidade
     if pos_carro_vermelho_y > 600:
         pos_carro_vermelho_y = randint(-1500, -400)
+
+    if (count_score == 5):
+        score += 1
+        texto_score = font.render("Score: " + str(score) + " ", True, (255, 255, 255), (0, 0, 0))
+        count_score = 0
 
     if(timer < 20):
         timer += 1
     else:
         segundos +=1
+        count_score += 1
         texto = font.render("Tempo: " + str(segundos) + " ", True, (255, 255, 255), (0, 0, 0))
         timer = 0
 
@@ -85,6 +96,7 @@ while(janela_aberta):
     janela.blit(carro_cinza, (pos_carro_cinza_x, pos_carro_cinza_y))
     janela.blit(carro_amarelo, (pos_carro_amarelo_x, pos_carro_amarelo_y))
     janela.blit(texto, pos_texto)
+    janela.blit(texto_score, pos_texto_score)
 
     pygame.display.update()
 
