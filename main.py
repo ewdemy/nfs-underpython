@@ -1,6 +1,7 @@
 import pygame
 from pygame import mixer
 from random import randint
+import math
 
 pygame.init()
 mixer.init()
@@ -54,6 +55,13 @@ carro_cinza = pygame.transform.scale(carro_cinza, tamanho_carro)
 
 pygame.display.set_icon(icon)
 
+def isCollision(carroX, carroY, outroX, outroY):
+    distance = math.sqrt(math.pow(carroX - outroX, 2) + (math.pow(carroY - outroY, 2)))
+    if distance < 60:
+        return True
+    else:
+        return False
+
 while(janela_aberta):
     velocidade = randint(5, 25)
     pygame.time.delay(50)
@@ -66,6 +74,14 @@ while(janela_aberta):
         pos_carro_x += distancia
     if comandos[pygame.K_LEFT] and pos_carro_x > 250:
         pos_carro_x -= distancia
+
+
+    if isCollision(pos_carro_x, pos_carro_y, pos_carro_amarelo_x, pos_carro_amarelo_y):
+        pos_carro_y = 1200
+    if isCollision(pos_carro_x, pos_carro_y, pos_carro_cinza_x, pos_carro_cinza_y):
+        pos_carro_y = 1200
+    if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
+        pos_carro_y = 1200
 
     pos_carro_cinza_y += velocidade + 5
     if pos_carro_cinza_y > 600:
