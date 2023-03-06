@@ -38,7 +38,7 @@ janela_aberta = True
 
 mixer.music.load("./sound/trilha.mp3")
 mixer.music.set_volume(0.5)
-mixer.music.play()
+#mixer.music.play()
 
 fundo = pygame.image.load("./img/fundo.png")
 icon = pygame.image.load("./img/icon.png")
@@ -76,11 +76,20 @@ while(janela_aberta):
         pos_carro_x -= distancia
 
 
-    if isCollision(pos_carro_x, pos_carro_y, pos_carro_amarelo_x, pos_carro_amarelo_y):
+    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_amarelo_x, pos_carro_amarelo_y):
+    #     pos_carro_y = 1200
+    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_cinza_x, pos_carro_cinza_y):
+    #     pos_carro_y = 1200
+    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
+    #     pos_carro_y = 1200
+
+    if ((pos_carro_x + 80 > pos_carro_amarelo_x and pos_carro_y + 180 < pos_carro_amarelo_y)):
         pos_carro_y = 1200
-    if isCollision(pos_carro_x, pos_carro_y, pos_carro_cinza_x, pos_carro_cinza_y):
+
+    if ((pos_carro_x - 80 < pos_carro_amarelo_x - 300 and pos_carro_y + 180 > pos_carro_vermelho_y)):
         pos_carro_y = 1200
-    if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
+
+    if ((pos_carro_x + 80 > pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)) and ((pos_carro_x - 80 < pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)):
         pos_carro_y = 1200
 
     pos_carro_cinza_y += velocidade + 5
@@ -94,7 +103,7 @@ while(janela_aberta):
         pos_carro_vermelho_y = randint(-1500, -400)
 
     if (count_score == 5):
-        score += 1
+        score += 10
         texto_score = font.render("Score: " + str(score) + " ", True, (255, 255, 255), (0, 0, 0))
         count_score = 0
 
