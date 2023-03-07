@@ -83,19 +83,19 @@ while(janela_aberta):
     # if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
     #     pos_carro_y = 1200
 
-    if ((pos_carro_x + 80 > pos_carro_amarelo_x and pos_carro_y + 180 < pos_carro_amarelo_y)):
+    if pos_carro_x + 55 > pos_carro_amarelo_x and pos_carro_amarelo_y + 130 > pos_carro_y and pos_carro_amarelo_y < pos_carro_y + 130:
         pos_carro_y = 1200
 
-    if ((pos_carro_x - 80 < pos_carro_amarelo_x - 300 and pos_carro_y + 180 > pos_carro_vermelho_y)):
-        pos_carro_y = 1200
-
-    if ((pos_carro_x + 80 > pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)) and ((pos_carro_x - 80 < pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)):
-        pos_carro_y = 1200
+    # if ((pos_carro_x - 55 < pos_carro_amarelo_x - 300 and pos_carro_y + 180 > pos_carro_vermelho_y)):
+    #     pos_carro_y = 1200
+    #
+    # if ((pos_carro_x + 80 > pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)) and ((pos_carro_x - 80 < pos_carro_amarelo_x - 136 and pos_carro_y + 180 > pos_carro_cinza_y)):
+    #     pos_carro_y = 1200
 
     pos_carro_cinza_y += velocidade + 5
     if pos_carro_cinza_y > 600:
         pos_carro_cinza_y = randint(-1500, -200)
-    pos_carro_amarelo_y += velocidade + 10
+    pos_carro_amarelo_y += velocidade + 7
     if pos_carro_amarelo_y > 600:
         pos_carro_amarelo_y = randint(-1500, -600)
     pos_carro_vermelho_y += velocidade
