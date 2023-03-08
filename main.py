@@ -83,7 +83,7 @@ while(janela_aberta):
     # if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
     #     pos_carro_y = 1200
 
-    if pos_carro_x + 55 > pos_carro_amarelo_x and pos_carro_amarelo_y + 130 > pos_carro_y and pos_carro_amarelo_y < pos_carro_y + 130:
+    if pos_carro_x + 55 > pos_carro_amarelo_x and pos_carro_amarelo_y + 130 > pos_carro_y and pos_carro_amarelo_y < pos_carro_y + 135:
         pos_carro_y = 1200
 
     # if ((pos_carro_x - 55 < pos_carro_amarelo_x - 300 and pos_carro_y + 180 > pos_carro_vermelho_y)):
