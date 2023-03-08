@@ -38,7 +38,7 @@ janela_aberta = True
 
 mixer.music.load("./sound/trilha.mp3")
 mixer.music.set_volume(0.5)
-#mixer.music.play()
+mixer.music.play()
 
 fundo = pygame.image.load("./img/fundo.png")
 icon = pygame.image.load("./img/icon.png")
@@ -93,13 +93,13 @@ while(janela_aberta):
             and pos_carro_cinza_y < pos_carro_y + 135:
         pos_carro_y = 1200
 
-    if pos_carro_x + 55 > pos_carro_vermelho_x \
-            and pos_carro_vermelho_y + 130 > pos_carro_y \
-            and pos_carro_vermelho_y < pos_carro_y + 135\
-            or pos_carro_x < pos_carro_vermelho_x + 55 \
-            and pos_carro_vermelho_y + 130 > pos_carro_y \
-            and pos_carro_vermelho_y < pos_carro_y + 135:
-        pos_carro_y = 1200
+    # if pos_carro_x + 55 > pos_carro_vermelho_x \
+    #         and pos_carro_vermelho_y + 130 > pos_carro_y \
+    #         and pos_carro_vermelho_y < pos_carro_y + 135\
+    #         or pos_carro_x < pos_carro_vermelho_x + 55 \
+    #         and pos_carro_vermelho_y + 130 > pos_carro_y \
+    #         and pos_carro_vermelho_y < pos_carro_y + 135:
+    #     pos_carro_y = 1200
 
 
     pos_carro_cinza_y += velocidade + 5
