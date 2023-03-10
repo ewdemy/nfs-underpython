@@ -37,8 +37,14 @@ distancia = 15
 janela_aberta = True
 
 mixer.music.load("./sound/trilha.mp3")
-mixer.music.set_volume(0.5)
+mixer.music.set_volume(0.2)
 mixer.music.play()
+
+som_carro = mixer.Sound("./sound/carro_acelerando.mp3")
+som_carro.play()
+
+som_batida = mixer.Sound("./sound/batida_carro.mp3")
+som_batida.set_volume(0.2)
 
 fundo = pygame.image.load("./img/fundo.png")
 icon = pygame.image.load("./img/icon.png")
@@ -55,12 +61,11 @@ carro_cinza = pygame.transform.scale(carro_cinza, tamanho_carro)
 
 pygame.display.set_icon(icon)
 
-def isCollision(carroX, carroY, outroX, outroY):
-    distance = math.sqrt(math.pow(carroX - outroX, 2) + (math.pow(carroY - outroY, 2)))
-    if distance < 60:
-        return True
-    else:
-        return False
+def batida():
+    som_carro.stop()
+    som_batida.play()
+    global pos_carro_y
+    pos_carro_y = 1200
 
 while(janela_aberta):
     velocidade = randint(5, 25)
@@ -76,22 +81,15 @@ while(janela_aberta):
         pos_carro_x -= distancia
 
 
-    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_amarelo_x, pos_carro_amarelo_y):
-    #     pos_carro_y = 1200
-    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_cinza_x, pos_carro_cinza_y):
-    #     pos_carro_y = 1200
-    # if isCollision(pos_carro_x, pos_carro_y, pos_carro_vermelho_x, pos_carro_vermelho_y):
-    #     pos_carro_y = 1200
-
     if pos_carro_x + 55 > pos_carro_amarelo_x \
             and pos_carro_amarelo_y + 130 > pos_carro_y \
             and pos_carro_amarelo_y < pos_carro_y + 135:
-        pos_carro_y = 1200
+        batida()
 
     if pos_carro_x < pos_carro_cinza_x + 60 \
             and pos_carro_cinza_y + 130 > pos_carro_y \
             and pos_carro_cinza_y < pos_carro_y + 135:
-        pos_carro_y = 1200
+        batida()
 
     if (pos_carro_x + 55 > pos_carro_vermelho_x \
             and pos_carro_vermelho_y + 130 > pos_carro_y \
@@ -99,7 +97,7 @@ while(janela_aberta):
             and (pos_carro_x < pos_carro_vermelho_x + 55 \
             and pos_carro_vermelho_y + 130 > pos_carro_y \
             and pos_carro_vermelho_y < pos_carro_y + 135):
-        pos_carro_y = 1200
+        batida()
 
 
     pos_carro_cinza_y += velocidade + 5
