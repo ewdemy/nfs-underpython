@@ -1,7 +1,6 @@
 import pygame
 from pygame import mixer
 from random import randint
-import math
 
 pygame.init()
 mixer.init()
@@ -62,10 +61,19 @@ carro_cinza = pygame.transform.scale(carro_cinza, tamanho_carro)
 pygame.display.set_icon(icon)
 
 def batida():
-    som_carro.stop()
     som_batida.play()
     global pos_carro_y
     pos_carro_y = 1200
+    som_carro.stop()
+    mixer.music.stop()
+
+fonte = pygame.font.SysFont("arial black", 30)
+texto_game_over = fonte.render("Game Over!", True, (255, 255, 255), (0, 0, 0))
+pos_texto_game_over = texto_game_over.get_rect()
+pos_texto_game_over.center = (400, 300)
+
+
+
 
 while(janela_aberta):
     velocidade = randint(5, 25)
@@ -85,11 +93,13 @@ while(janela_aberta):
             and pos_carro_amarelo_y + 130 > pos_carro_y \
             and pos_carro_amarelo_y < pos_carro_y + 135:
         batida()
+        janela.blit(texto_game_over, pos_texto_game_over)
 
     if pos_carro_x < pos_carro_cinza_x + 60 \
             and pos_carro_cinza_y + 130 > pos_carro_y \
             and pos_carro_cinza_y < pos_carro_y + 135:
         batida()
+        janela.blit(texto_game_over, pos_texto_game_over)
 
     if (pos_carro_x + 55 > pos_carro_vermelho_x \
             and pos_carro_vermelho_y + 130 > pos_carro_y \
@@ -98,6 +108,7 @@ while(janela_aberta):
             and pos_carro_vermelho_y + 130 > pos_carro_y \
             and pos_carro_vermelho_y < pos_carro_y + 135):
         batida()
+        janela.blit(texto_game_over, pos_texto_game_over)
 
 
     pos_carro_cinza_y += velocidade + 5
