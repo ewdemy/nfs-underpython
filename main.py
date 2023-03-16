@@ -67,7 +67,7 @@ def batida():
     som_carro.stop()
     mixer.music.stop()
 
-fonte = pygame.font.SysFont("arial black", 30)
+fonte = pygame.font.SysFont("arial black", 50)
 texto_game_over = fonte.render("Game Over!", True, (255, 255, 255), (0, 0, 0))
 pos_texto_game_over = texto_game_over.get_rect()
 pos_texto_game_over.center = (400, 300)
